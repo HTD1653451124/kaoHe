@@ -46,7 +46,7 @@
     <table>
         <c:forEach items="${articles}" var="m" >
           <tr>
-            <td class="td_right"><a href="/CAT_war_exploded/visitArticle?text=${m.contentText}&articleId=${m.articleId}&workerId=${m.workerId}&visNum=${m.visNum}&picture=${m.contentPicture}&likesNum=${m.likesNum}&collectionNum=${m.collectionNum}&title=${m.title}&type=tourist">${m.title}</a></td>
+            <td class="td_right"><a href="${pageContext.request.contextPath}/userServlet?text=${m.contentText}&articleId=${m.articleId}&workerId=${m.workerId}&visNum=${m.visNum}&picture=${m.contentPicture}&likesNum=${m.likesNum}&collectionNum=${m.collectionNum}&title=${m.title}&type=tourist&method=visitArticle">${m.title}</a></td>
           </tr>
         </c:forEach>
     </table>

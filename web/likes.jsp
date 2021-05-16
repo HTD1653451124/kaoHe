@@ -54,7 +54,6 @@
         }
         var pic = document.getElementById("img");
         pic.src = "image/pic"+num+".jpg";
-
     }
     setInterval(changePic,3000);
 </script>

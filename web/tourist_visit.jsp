@@ -31,7 +31,6 @@
             width: 1px;
         }
 
-
     </style>
 </head>
 <body>

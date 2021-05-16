@@ -112,7 +112,7 @@
             $.ajax({
                 type:'POST',
                 data:"userId=${userId}&articleId=${article.articleId}&account=${user.account}",
-                url :'/CAT_war_exploded/likes',
+                url :'${pageContext.request.contextPath}/userServlet?method=likes',
                 success :function(data) {
                     var ele = document.getElementById("likes1").value;
                     if (ele==="点赞"){
@@ -131,7 +131,7 @@
             $.ajax({
                 type:'POST',
                 data:"userId=${userId}&articleId=${article.articleId}&account=${user.account}",
-                url :'/CAT_war_exploded/collection',
+                url :'${pageContext.request.contextPath}/userServlet?method=collection',
                 success :function(data) {
                     var ele = document.getElementById("collection1").value;
                     if (ele==="收藏"){
@@ -152,7 +152,7 @@
                 $.ajax({
                     type:'POST',
                     data:"userId=${userId}&articleId=${article.articleId}&vName=${user.virName}&account=${user.account}&content="+inputContent,
-                    url :'/CAT_war_exploded/comment',
+                    url :'${pageContext.request.contextPath}/userServlet?method=comment',
                     success:function (data){
                         alert("评论成功");
                     }

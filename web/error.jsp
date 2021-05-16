@@ -8,9 +8,6 @@
 
     var second = 3;
     var tar = "<%=session.getAttribute("target")%>";
-    alert(tar);
-
-
     function changeTime(){
         second--;
         if (second<=0){

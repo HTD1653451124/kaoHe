@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: HTD
-  Date: 2021/5/11
-  Time: 21:32
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +100,7 @@
         if (chenkAccount() && checkPassword() && checkRePassword()&& checkVirName()){
             form.submit(function (){
               if (chenkAccount() && checkPassword() && checkRePassword()&& checkVirName()){
-                $.post("regisUser",$(this).serialize(),function (data){
+                $.post("baseServlet?method=regisUser",$(this).serialize(),function (data){
 
                 })
               }
@@ -129,7 +122,7 @@
       $("#account").blur(function (){
         var ele = document.getElementById("account");
         var account = ele.value;
-        $.post("findUserAccount",{account:account},function (data){
+        $.post("userServlet?method=findUserAccount",{account:account},function (data){
           var span = $("#s_account");
           if (data.userExist){
             //用户名存在
@@ -155,7 +148,7 @@
 
   <div class="rg_middle">
     <div id="error_msg" style="color: red ;text-align: center" ></div>
-    <form  action = "/CAT_war_exploded/regisUser" id="reg_form" method = "post">
+    <form  action = "${pageContext.request.contextPath}/userServlet?method=regisUser" id="reg_form" method = "post">
       <table>
         <tr>
           <td class="td_left"><label>昵称</label></td>

@@ -3,20 +3,17 @@ package com.ccj.event.controller;
 import com.ccj.event.entity.Article;
 import com.ccj.event.service.Impl.ArticleServiceImpl;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
-@WebServlet("/articleServlet")
-public class ArticleServlet extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //设置编码
-        req.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json;charset=utf-8");
+
+@WebServlet("/touristServlet")
+public class TouristServlet extends BaseServlet{
+    public void getTourArticle(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
         //调用service层代码获取所有文章
         ArticleServiceImpl articleService = new ArticleServiceImpl();
         List<Article> articleAll = articleService.getAll();
@@ -25,11 +22,5 @@ public class ArticleServlet extends HttpServlet {
         session.setAttribute("articles",articleAll);
         req.setAttribute("articles",articleAll);
         req.getRequestDispatcher("/tourist.jsp").forward(req,resp);
-
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doPost(req,resp);
     }
 }

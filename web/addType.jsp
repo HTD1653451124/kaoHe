@@ -16,12 +16,11 @@
         }
     </style>
 
-
 </head>
 <body>
 
 <div >
-    <form method="post" action="/CAT_war_exploded/addTypeServlet" name="form2" id="form2">
+    <form method="post" action="${pageContext.request.contextPath}/adminServlet?method=addType" name="form2" id="form2">
         <input type="text" placeholder="请输入类别" name="text" id="text">
         <input type="submit" id="bt"  value="提交">
     </form>

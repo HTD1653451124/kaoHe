@@ -39,7 +39,7 @@
 </style>
 </head>
 <body>
-<form action="/CAT_war_exploded/publishServlet" class="form1" id="form1" method="post">
+<form action="${pageContext.request.contextPath}/workerServlet?method=publish" class="form1" id="form1" method="post">
     <div class="div_top" id="div_top">
         <textarea style="display: none" name="workerId">${workerMsg.workerId}</textarea>
         <textarea style="display: none" name="account">${workerMsg.account}</textarea>
@@ -57,7 +57,7 @@
     <textarea  name="textContent" id="textContent" class="textContent"></textarea>
     </div>
     <div class="div_bottom">
-        <input type="submit" name="btn" id="btn" value="发布">
+        <input type="button" name="btn" id="btn" value="发布">
     </div>
 </form>
 </body>
@@ -69,6 +69,7 @@
     var form = document.getElementById("form1");
     function check(){
         if (title == "" && title.value==null && text == "" && text.value==null){
+
             return false;
         }else {
             return true;
@@ -79,7 +80,7 @@
             if (check()){
                 form.submit();
             }else {
-
+                alert("输入不能为空");
             }
 
         }

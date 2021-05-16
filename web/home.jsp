@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="css/bootstrap.min.css" >
     <title>健康有你</title>
   <script src="js/js3.js"></script>
@@ -57,7 +56,7 @@
         </div>
       </table>
     <table>
-        <form method="post" action="/CAT_war_exploded/search?rows=5">
+        <form method="post" action="${pageContext.request.contextPath}/userServlet?rows=5&method=search">
         <tr>
           <td class="hidden"><input style="display: none" name="account" value="${user.account}"></td>
           <td><input class="form-control" type="text" name="search" id="search" placeholder="请输入关键词搜索"></td>
@@ -68,7 +67,7 @@
     <table>
         <c:forEach items="${pb.list}" var="m">
             <tr>
-              <td class="td_right"><a href="/CAT_war_exploded/visitArticle?text=${m.contentText}&articleId=${m.articleId}&workerId=${m.workerId}&visNum=${m.visNum}&picture=${m.contentPicture}&likesNum=${m.likesNum}&collectionNum=${m.collectionNum}&title=${m.title}&userId=${user.userId}">${m.title}</a> 点赞数:${m.likesNum} 收藏数:${m.collectionNum}</td>
+              <td class="td_right"><a href="${pageContext.request.contextPath}/userServlet?text=${m.contentText}&articleId=${m.articleId}&workerId=${m.workerId}&visNum=${m.visNum}&picture=${m.contentPicture}&likesNum=${m.likesNum}&collectionNum=${m.collectionNum}&title=${m.title}&userId=${user.userId}&method=visitArticle">${m.title}</a> 点赞数:${m.likesNum} 收藏数:${m.collectionNum}</td>
             </tr>
         </c:forEach>
     </table>
@@ -76,7 +75,7 @@
       <nav aria-label="Page navigation">
           <ul class="pagination">
               <c:forEach begin="1" end="${pb.totalPage}" var="i">
-                  <li><a href="${pageContext.request.contextPath}/loginUser?currentPage=${i}&rows=5&account=${user.account}&lg_type=user&password=${user.password}&method=${method}&text=${text}">${i}</a></li>
+                  <li><a href="${pageContext.request.contextPath}/userServlet?currentPage=${i}&rows=5&account=${user.account}&lg_type=user&password=${user.password}&method=${method}&text=${text}">${i}</a></li>
               </c:forEach>
           </ul>
       </nav>
@@ -96,21 +95,6 @@
 
   }
   setInterval(changePic,3000);
-
-
-  // var likesId = document.getElementById("likes");
-  // var collectionId = document.getElementById("collection");
-  // $(function (){
-  //   likesId.onclick = function (){
-  //
-  //   }
-  // })
-
-  // var bt_search = document.getElementById("bt_search");
-  // var searchText = document.getElementById("search");
-
-
-
 
 </script>
 

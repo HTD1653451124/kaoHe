@@ -9,12 +9,14 @@
     <title>管理员</title>
     <style>
         .left{
+            width: 300px;
             float: left;
             font-size: 40px;
             margin-left: auto;
             margin-right: auto;
         }
         .right{
+            width: 300px;
             float: left;
             font-size: 40px;
             margin-left: auto;
@@ -24,7 +26,7 @@
 </head>
 <body>
 <div>
-    <a href="/CAT_war_exploded/addType.jsp"><input class="btn btn-block" type="button" name="add" id="add" value="添加新分类"></a>
+    <a href="${pageContext.request.contextPath}/addType.jsp"><input class="btn btn-block" type="button" name="add" id="add" value="添加新分类"></a>
 </div>
 <div class="left">
     <table>
@@ -41,7 +43,7 @@
         <c:forEach items="${sum}" var="s" varStatus="i">
             <tr>
                 <td style="font-size: 50px">浏览量:${s.value}</td>
-                <td><a href="/CAT_war_exploded/deleteType?typeId=${s.key}"> <input class="btn btn-default" type="button"   value="删除"></a></td>
+                <td><a href="${pageContext.request.contextPath}/adminServlet?typeId=${s.key}&method=deleteType"> <input class="btn btn-default" type="button"   value="删除"></a></td>
             </tr>
         </c:forEach>
     </table>

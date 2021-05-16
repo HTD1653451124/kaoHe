@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypesDaoImpl implements TypesDao {
+    /**
+     * 获取所有文章的种类
+     * @return
+     */
     @Override
     public List<Types> getAll() {
         Connection conn = null;

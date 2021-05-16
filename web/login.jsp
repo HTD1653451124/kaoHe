@@ -89,7 +89,7 @@
                 if (checkAccount() && checkPassword()){
                     form.submit(function (){
                         if (checkAccount() && checkPassword()){
-                            $.post("/CAT_war_exploded/loginUser",$(this).serialize(),function (data){
+                            $.post("${pageContext.request.contextPath}/userServlet?method=login",$(this).serialize(),function (data){
                                 alert(data.msg);
                             })
                         }
@@ -112,7 +112,7 @@
     </div>
     <div class = "lg_middle">
         <div class="lg_form">
-            <form action="/CAT_war_exploded/loginUser" method="post" id="form">
+            <form action="${pageContext.request.contextPath}/userServlet?method=login" method="post" id="form">
                 <table >
                     <!--                    账号输入-->
                     <tr>
@@ -132,7 +132,7 @@
 
                     <!--                  登录和注册按钮-->
                     <tr>
-                        <td colspan="2" align="center"><a href="${pageContext.request.contextPath}/articleServlet"><input type="button" id = "vis_login" value="游客登陆"></a></td>
+                        <td colspan="2" align="center"><a href="${pageContext.request.contextPath}/touristServlet?method=getTourArticle"><input type="button" id = "vis_login" value="游客登陆"></a></td>
                     </tr>
 
                     <tr>

@@ -5,6 +5,5 @@
   </head>
   <body>
 
-  <input type="button" value="nviaba">
   </body>
 </html>

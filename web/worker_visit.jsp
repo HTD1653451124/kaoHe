@@ -43,11 +43,11 @@
     </div>
     <hr/>
     <div class="div_allComment">
-        <form method="post" action="/CAT_war_exploded/deleteComment">
+        <form method="post" action="${pageContext.request.contextPath}/workerServlet?method=deleteComment">
             <table>
                 <c:forEach items="${allComment}" var="com">
                     <tr>
-                        <td>${com.user_virName}:${com.content}</td>
+                        <td>${com.userVirName}:${com.content}</td>
                         <td class="hidden"><input style="display: none" name="commentId" value="${com.commentId}"></td>
                         <td class="hidden"><input style="display: none" name="articleId" value="${article.articleId}"></td>
                         <td><input type="submit" name="delete" id="delete" value="删除"></td>
@@ -61,14 +61,6 @@
     </div>
 </div>
 
-<script>
-    var del = document.getElementById("delete");
-    $(function (){
-        del.onclick = function (){
 
-
-        }
-    })
-</script>
 </body>
 </html>
