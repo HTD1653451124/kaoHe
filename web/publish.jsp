@@ -26,6 +26,11 @@
         margin-left: auto;
         margin-right: auto;
     }
+    .div_second{
+        width: 300px;
+        margin-right: auto;
+        margin-left: auto;
+    }
     .title{
         width: 200px;
         height: 30px;
@@ -46,7 +51,7 @@
         <p>${workerMsg.virName},分享你的知识吧!</p>
         <input type="text" class="title" id="title" name="title" placeholder="标题">
     </div>
-    <div>
+    <div class="div_second">
         <select name="types">
             <c:forEach items="${types}" var="t">
                 <option  value="${t.typesId}">${t.type}</option>
@@ -61,15 +66,16 @@
     </div>
 </form>
 </body>
-<script type="text/javascript" src="js/wangEditor.min.js"></script>
-<script type="text/javascript">
-    var title = document.getElementById("title").value;
-    var text = document.getElementById("textContent").value;
+
+<script>
+
+
     var btn = document.getElementById("btn");
     var form = document.getElementById("form1");
     function check(){
+        var title = document.getElementById("title").value;
+        var text = document.getElementById("textContent").value;
         if (title == "" && title.value==null && text == "" && text.value==null){
-
             return false;
         }else {
             return true;
@@ -80,7 +86,8 @@
             if (check()){
                 form.submit();
             }else {
-                alert("输入不能为空");
+                alert(title);
+                alert(text);
             }
 
         }

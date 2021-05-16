@@ -9,8 +9,9 @@
     <script src="js/bootstrap.min.js"></script>
     <title>Title</title>
     <style>
-        .input-group{
-            width: 800px;
+        .div{
+            width: 500px;
+            height: 500px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -19,7 +20,7 @@
 </head>
 <body>
 
-<div >
+<div class="div" >
     <form method="post" action="${pageContext.request.contextPath}/adminServlet?method=addType" name="form2" id="form2">
         <input type="text" placeholder="请输入类别" name="text" id="text">
         <input type="submit" id="bt"  value="提交">
