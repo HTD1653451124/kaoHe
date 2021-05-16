@@ -86,7 +86,7 @@ public class WorkerDaoImpl implements WorkerDao {
             ps.setString(1,account);
             rs = ps.executeQuery();
             if (rs.next()){
-                worker.setWorker_id(rs.getInt("worker_id"));
+                worker.setWorkerId(rs.getInt("worker_id"));
                 worker.setAccount(rs.getString("account"));
                 worker.setPassword(rs.getString("password"));
                 worker.setGender(rs.getString("gender"));
@@ -115,12 +115,12 @@ public class WorkerDaoImpl implements WorkerDao {
             String sql = "insert into article (article_id,worker_id ,content_text,content_picture,vis_num,likes_num,collection_num,title) values (null,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             //设置插入值
-            ps.setInt(1,article.getWorker_id());
+            ps.setInt(1,article.getWorkerId());
             ps.setString(2,article.getContentText());
             ps.setString(3,article.getContentPicture());
             ps.setInt(4,article.getVisNum());
-            ps.setInt(5,article.getLikes_num());
-            ps.setInt(6,article.getCollection_num());
+            ps.setInt(5,article.getLikesNum());
+            ps.setInt(6,article.getCollectionNum());
             ps.setString(7,article.getTitle());
             ps.executeUpdate();
         } catch (SQLException throwables) {

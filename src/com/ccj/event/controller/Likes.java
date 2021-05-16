@@ -20,14 +20,14 @@ public class Likes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        String user_id = req.getParameter("user_id");
-        String article_id = req.getParameter("article_id");
+        String userId = req.getParameter("userId");
+        String articleId = req.getParameter("articleId");
         String account = req.getParameter("account");
 
         LikesServiceImpl likesService = new LikesServiceImpl();
-        Boolean like = likesService.like(article_id, user_id);
-        String islikes = likesService.getIsLikes(article_id, user_id);
-        String isCollection = likesService.getCollection(article_id, user_id);
+        Boolean like = likesService.like(articleId, userId);
+        String islikes = likesService.getIsLikes(articleId, userId);
+        String isCollection = likesService.getCollection(articleId, userId);
         if ("1".equals(islikes)){}else { islikes = "0";}
         if ("1".equals(isCollection)){}else { isCollection = "0";}
         //Boolean collect = likesService.collect(article_id, user_id);
@@ -40,7 +40,7 @@ public class Likes extends HttpServlet {
             List<Article> articles = articleService.getAll();
             User allInfo = userService.findAll(account);
             session.setAttribute("articles",articles);
-            session.setAttribute("user_id",allInfo.getUser_id());
+            session.setAttribute("user_id",allInfo.getUserId());
             req.getRequestDispatcher("/visitArticleContent.jsp").forward(req,resp);
         }
 

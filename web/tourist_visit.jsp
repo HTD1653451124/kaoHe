@@ -47,7 +47,7 @@
             <table>
                 <c:forEach items="${allComment}" var="com">
                     <tr>
-                        <td>${com.user_virName}:${com.content}</td>
+                        <td>${com.userVirName}:${com.content}</td>
                     </tr>
                 </c:forEach>
             </table>

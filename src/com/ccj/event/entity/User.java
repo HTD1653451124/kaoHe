@@ -1,7 +1,7 @@
 package com.ccj.event.entity;
 
 public class User {
-    private int user_id;
+    private int userId;
     private String account;
     private String password;
     private String virName;
@@ -10,20 +10,20 @@ public class User {
     public User() {
     }
 
-    public User(int user_id, String account, String password, String virName, String gender) {
-        this.user_id = user_id;
+    public User(int userId, String account, String password, String virName, String gender) {
+        this.userId = userId;
         this.account = account;
         this.password = password;
         this.virName = virName;
         this.gender = gender;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getAccount() {
@@ -58,14 +58,5 @@ public class User {
         this.gender = gender;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", virName='" + virName + '\'' +
-                ", gender='" + gender + '\'' +
-                '}';
-    }
+
 }

@@ -17,12 +17,12 @@ public class DeleteComment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        String comment_id = req.getParameter("comment_id");
-        String article_id = req.getParameter("article_id");
+        String commentId = req.getParameter("commentId");
+        String articleId = req.getParameter("articleId");
         CommentServiceImpl commentService = new CommentServiceImpl();
-        Boolean isSuccess = commentService.deleteComment(comment_id);
+        Boolean isSuccess = commentService.deleteComment(commentId);
         HttpSession session = req.getSession();
-        List<Comment> allComment = commentService.findAllComment(article_id);
+        List<Comment> allComment = commentService.findAllComment(articleId);
         session.setAttribute("allComment",allComment);
         req.getRequestDispatcher("/worker_visit.jsp").forward(req,resp);
 

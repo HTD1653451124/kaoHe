@@ -50,7 +50,7 @@
                 <td><h4>${workerMsg.virName},您好！</h4></td>
             </tr>
             <tr>
-                <td><a href="publish.jsp"><input type="button" id="publish" value="发布文章"></a></td>
+                <td><a href="/CAT_war_exploded/typesServlet"><input type="button" id="publish" value="发布文章"></a></td>
             </tr>
 
         </table>
@@ -62,10 +62,10 @@
                     <tr>
                         <td class="td_1">${p.title}</td>
                         <td class="td_2">浏览量:${p.visNum}</td>
-                        <td class="td_4">点赞数:${p.likes_num}</td>
-                        <td class="td_5">收藏数:${p.collection_num}</td>
-                        <td class="td_6"><a href="/CAT_war_exploded/visitArticle?text=${p.contentText}&article_id=${p.article_id}&worker_id=${p.worker_id}&visNum=${p.visNum}&picture=${p.contentPicture}&likes_num=${p.likes_num}&collection_num=${p.collection_num}&title=${p.title}&type=worker"><input type="button" value="查看内容"></a></td>
-                        <td><a href="/CAT_war_exploded/deleteServlet?article_id=${p.article_id}&account=${workerMsg.account}"><input type="button" value="删除"></a></td>
+                        <td class="td_4">点赞数:${p.likesNum}</td>
+                        <td class="td_5">收藏数:${p.collectionNum}</td>
+                        <td class="td_6"><a href="/CAT_war_exploded/visitArticle?text=${p.contentText}&articleId=${p.articleId}&workerId=${p.workerId}&visNum=${p.visNum}&picture=${p.contentPicture}&likesNum=${p.likesNum}&collectionNum=${p.collectionNum}&title=${p.title}&type=worker"><input type="button" value="查看内容"></a></td>
+                        <td><a href="/CAT_war_exploded/deleteServlet?articleId=${p.articleId}&account=${workerMsg.account}"><input type="button" value="删除"></a></td>
                     </tr>
                 </c:forEach>
             </table>

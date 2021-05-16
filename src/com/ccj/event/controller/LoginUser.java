@@ -1,8 +1,12 @@
 package com.ccj.event.controller;
 
+import com.ccj.event.bean.AdminBean;
+import com.ccj.event.bean.PageBean;
 import com.ccj.event.entity.Article;
+import com.ccj.event.entity.Types;
 import com.ccj.event.entity.User;
 import com.ccj.event.entity.Worker;
+import com.ccj.event.service.Impl.AdminServiceImpl;
 import com.ccj.event.service.Impl.ArticleServiceImpl;
 import com.ccj.event.service.Impl.UserServiceImpl;
 import com.ccj.event.service.Impl.WorkerServiceImpl;
@@ -31,22 +35,43 @@ public class LoginUser extends HttpServlet {
         String account = req.getParameter("account");
         String password = req.getParameter("password");
         String lg_type = req.getParameter("lg_type");
+        String currentPage = req.getParameter("currentPage");
+        String rows = req.getParameter("rows");
+        String method = req.getParameter("method");
+        //调用service层代码
+        ArticleServiceImpl articleService = new ArticleServiceImpl();
+        PageBean<Article> pb =  articleService.findArticleByPage(currentPage,rows);
         String s = "user";
         Boolean isSuccess ;
+        HttpSession session = req.getSession();
+        if ("1".equals(account) && "1".equals(password)){
+            //管理员登录
+            AdminServiceImpl adminService = new AdminServiceImpl();
+            AdminBean info = adminService.getInfo();
+            Map<Integer, Integer> infoResult = info.getResult();
+            List<Types> typesList = info.getTypes();
+            session.setAttribute("types",typesList);
+            session.setAttribute("sum",infoResult);
+            req.getRequestDispatcher("/admin_home.jsp").forward(req,resp);
+        }
         if (s.equals(lg_type)){
             //普通用户登录
             //调用service层的注册方法
             UserServiceImpl userService = new UserServiceImpl();
-            ArticleServiceImpl articleService = new ArticleServiceImpl();
             isSuccess = userService.login(account, password);
             //返回提示
             if (isSuccess){
-                List<Article> articleAll = articleService.getAll();
                 User allInfo = userService.findAll(account);
                 //将数据返回前台
-                HttpSession session = req.getSession();
-                session.setAttribute("articles",articleAll);
+
                 session.setAttribute("user",allInfo);
+                //用于判断是哪个查询返回的pb
+                session.setAttribute("method","login");
+                if ("search".equals(method)){
+                    req.getRequestDispatcher("/search").forward(req,resp);
+                    return;
+                }
+                session.setAttribute("pb",pb);
                 req.getRequestDispatcher("/home.jsp").forward(req,resp);
             }else {
                 req.setAttribute("login_msg","登陆失败");
@@ -62,9 +87,7 @@ public class LoginUser extends HttpServlet {
                 //成功则查询该worker的信息然后跳转页面
                 //调用service中的方法
                 Worker workerMsg = workerService.getWorkerMsg(account);
-                ArticleServiceImpl articleService = new ArticleServiceImpl();
                 List<Article> personalArticle = articleService.getPersonalArticle(account);
-                HttpSession session = req.getSession();
                 session.setAttribute("workerMsg",workerMsg);
                 session.setAttribute("personArticle",personalArticle);
                 req.getRequestDispatcher("/worker_home.jsp").forward(req,resp);

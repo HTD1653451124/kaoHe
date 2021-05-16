@@ -63,7 +63,7 @@
 <hr/>
     <div class="div_allComment">
         <c:forEach items="${allComment}" var="com">
-            <h6>${com.user_virName}:${com.content}</h6>
+            <h6>${com.userVirName}:${com.content}</h6>
         </c:forEach>
     </div>
     <div class="div_comment">
@@ -111,7 +111,7 @@
         likes.onclick = function (){
             $.ajax({
                 type:'POST',
-                data:"user_id=${user_id}&article_id=${article.article_id}&account=${user.account}",
+                data:"userId=${userId}&articleId=${article.articleId}&account=${user.account}",
                 url :'/CAT_war_exploded/likes',
                 success :function(data) {
                     var ele = document.getElementById("likes1").value;
@@ -130,7 +130,7 @@
         collection.onclick = function (){
             $.ajax({
                 type:'POST',
-                data:"user_id=${user_id}&article_id=${article.article_id}&account=${user.account}",
+                data:"userId=${userId}&articleId=${article.articleId}&account=${user.account}",
                 url :'/CAT_war_exploded/collection',
                 success :function(data) {
                     var ele = document.getElementById("collection1").value;
@@ -151,7 +151,7 @@
                 var inputContent = document.getElementById("comment").value;
                 $.ajax({
                     type:'POST',
-                    data:"user_id=${user_id}&article_id=${article.article_id}&vName=${user.virName}&account=${user.account}&content="+inputContent,
+                    data:"userId=${userId}&articleId=${article.articleId}&vName=${user.virName}&account=${user.account}&content="+inputContent,
                     url :'/CAT_war_exploded/comment',
                     success:function (data){
                         alert("评论成功");

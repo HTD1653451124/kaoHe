@@ -48,8 +48,8 @@
                 <c:forEach items="${allComment}" var="com">
                     <tr>
                         <td>${com.user_virName}:${com.content}</td>
-                        <td class="hidden"><input style="display: none" name="comment_id" value="${com.comment_id}"></td>
-                        <td class="hidden"><input style="display: none" name="article_id" value="${article.article_id}"></td>
+                        <td class="hidden"><input style="display: none" name="commentId" value="${com.commentId}"></td>
+                        <td class="hidden"><input style="display: none" name="articleId" value="${article.articleId}"></td>
                         <td><input type="submit" name="delete" id="delete" value="删除"></td>
                     </tr>
                 </c:forEach>

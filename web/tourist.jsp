@@ -35,18 +35,18 @@
     <div class="changePic">
       <img id="img" src="image/pic1.jpg" width="100%" height="235px">
     </div>
-    <form method="post" action="/CAT_war_exploded/search?type=tourist">
-      <table>
-            <tr>
-              <td><input type="text" name="search" id="search" placeholder="请输入关键词搜索"></td>
-              <td><input type="submit" name="btn_search" value="搜索"></td>
-            </tr>
-      </table>
-    </form>
+<%--    <form method="post" action="/CAT_war_exploded/search?type=tourist">--%>
+<%--      <table>--%>
+<%--            <tr>--%>
+<%--              <td><input type="text" name="search" id="search" placeholder="请输入关键词搜索"></td>--%>
+<%--              <td><input type="submit" name="btn_search" value="搜索"></td>--%>
+<%--            </tr>--%>
+<%--      </table>--%>
+<%--    </form>--%>
     <table>
         <c:forEach items="${articles}" var="m" >
           <tr>
-            <td class="td_right"><a href="/CAT_war_exploded/visitArticle?text=${m.contentText}&article_id=${m.article_id}&worker_id=${m.worker_id}&visNum=${m.visNum}&picture=${m.contentPicture}&likes_num=${m.likes_num}&collection_num=${m.collection_num}&title=${m.title}&type=tourist">${m.title}</a></td>
+            <td class="td_right"><a href="/CAT_war_exploded/visitArticle?text=${m.contentText}&articleId=${m.articleId}&workerId=${m.workerId}&visNum=${m.visNum}&picture=${m.contentPicture}&likesNum=${m.likesNum}&collectionNum=${m.collectionNum}&title=${m.title}&type=tourist">${m.title}</a></td>
           </tr>
         </c:forEach>
     </table>

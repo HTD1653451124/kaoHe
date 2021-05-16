@@ -1,25 +1,25 @@
 package com.ccj.event.entity;
 
 public class Admin {
-    private int admin_id;
+    private int adminId;
     private String account;
     private String password;
 
     public Admin() {
     }
 
-    public Admin(int admin_id, String account, String password) {
-        this.admin_id = admin_id;
+    public Admin(int adminId, String account, String password) {
+        this.adminId = adminId;
         this.account = account;
         this.password = password;
     }
 
-    public int getAdmin_id() {
-        return admin_id;
+    public int getAdminId() {
+        return adminId;
     }
 
-    public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getAccount() {
@@ -41,7 +41,7 @@ public class Admin {
     @Override
     public String toString() {
         return "Admin{" +
-                "admin_id=" + admin_id +
+                "adminId=" + adminId +
                 ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 '}';

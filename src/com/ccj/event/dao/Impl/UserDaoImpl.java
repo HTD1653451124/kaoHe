@@ -127,7 +127,7 @@ public class UserDaoImpl implements UserDao {
                 String password = rs.getString("password");
                 String vir_name = rs.getString("vir_name");
                 String gender = rs.getString("gender");
-                user.setUser_id(user_id);
+                user.setUserId(user_id);
                 user.setPassword(password);
                 user.setAccount(account1);
                 user.setGender(gender);

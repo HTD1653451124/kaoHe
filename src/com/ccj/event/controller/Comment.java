@@ -16,11 +16,11 @@ public class Comment extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         String content = req.getParameter("content");
-        String user_id = req.getParameter("user_id");
-        String article_id = req.getParameter("article_id");
+        String userId = req.getParameter("userId");
+        String articleId = req.getParameter("articleId");
         String vName = req.getParameter("vName");
         CommentServiceImpl commentService = new CommentServiceImpl();
-        Boolean isSuccess = commentService.commentService(content, user_id, article_id,vName);
+        Boolean isSuccess = commentService.commentService(content, userId, articleId,vName);
         HttpSession session = req.getSession();
         if (isSuccess){
             session.setAttribute("Msg","评论成功");

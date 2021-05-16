@@ -1,9 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
     <title>发布文章</title>
+    <script src="js/jquery.js" ></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/js3.js"></script>
 <style>
     .div_top{
@@ -35,10 +41,17 @@
 <body>
 <form action="/CAT_war_exploded/publishServlet" class="form1" id="form1" method="post">
     <div class="div_top" id="div_top">
-        <textarea style="display: none" name="worker_id">${workerMsg.worker_id}</textarea>
+        <textarea style="display: none" name="workerId">${workerMsg.workerId}</textarea>
         <textarea style="display: none" name="account">${workerMsg.account}</textarea>
         <p>${workerMsg.virName},分享你的知识吧!</p>
         <input type="text" class="title" id="title" name="title" placeholder="标题">
+    </div>
+    <div>
+        <select name="types">
+            <c:forEach items="${types}" var="t">
+                <option  value="${t.typesId}">${t.type}</option>
+            </c:forEach>
+        </select>
     </div>
     <div class="div_middle" id="editor" name="editor">
     <textarea  name="textContent" id="textContent" class="textContent"></textarea>

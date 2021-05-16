@@ -21,13 +21,13 @@ public class DeleteServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("application/json;charset=utf-8");
         //获取article_id参数
-        String article_id = req.getParameter("article_id");
+        String articleId = req.getParameter("articleId");
         String account = req.getParameter("account");
         //调用service层方法实现删除文章和该文章的所有评论
         ArticleServiceImpl articleService = new ArticleServiceImpl();
         CommentServiceImpl commentService = new CommentServiceImpl();
-        Boolean isSuccess = articleService.deleteArticle(article_id);
-        commentService.deleteCommentInArticle(article_id);
+        Boolean isSuccess = articleService.deleteArticle(articleId);
+        commentService.deleteCommentInArticle(articleId);
         if (isSuccess){
             //成功刷新页面
             List<Article> personalArticle = articleService.getPersonalArticle(account);

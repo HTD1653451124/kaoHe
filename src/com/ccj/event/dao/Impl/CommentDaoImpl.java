@@ -59,11 +59,11 @@ public class CommentDaoImpl implements CommentDao {
                 String content = rs.getString("content");
                 int article_id1 = rs.getInt("article_id");
                 String user_virName = rs.getString("user_virName");
-                comment.setComment_id(comment_id);
-                comment.setArticle_id(article_id1);
+                comment.setCommentId(comment_id);
+                comment.setArticleId(article_id1);
                 comment.setContent(content);
-                comment.setUser_id(user_id);
-                comment.setUser_virName(user_virName);
+                comment.setUserId(user_id);
+                comment.setUserVirName(user_virName);
                 list.add(comment);
             }
         } catch (SQLException throwables) {

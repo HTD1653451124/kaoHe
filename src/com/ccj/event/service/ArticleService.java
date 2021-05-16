@@ -1,5 +1,6 @@
 package com.ccj.event.service;
 
+import com.ccj.event.bean.PageBean;
 import com.ccj.event.entity.Article;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public interface ArticleService {
      * @param picture
      * @return
      */
-    public Boolean publish(String title ,String text ,String worker_id,String picture);
+    public Boolean publish(String title ,String text ,String worker_id,String picture,String types_id);
 
     /**
      * worker自己删除指定文章
@@ -40,4 +41,12 @@ public interface ArticleService {
      * @param article_id
      */
     public void addVisNum(int article_id);
+
+    /**
+     * F分页查询所有文章
+     * @param currentPage
+     * @param rows
+     * @return
+     */
+    PageBean<Article> findArticleByPage(String currentPage, String rows);
 }

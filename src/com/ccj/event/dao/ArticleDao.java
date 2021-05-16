@@ -19,7 +19,7 @@ public interface ArticleDao {
     public List<Article> findPersonalArticle(String account);
 
 
-    public Boolean publish(String title ,String text ,String worker_id,String picture);
+    public Boolean publish(String title ,String text ,String worker_id,String picture,String types_id);
 
     /**
      * 删除指定文章
@@ -33,4 +33,18 @@ public interface ArticleDao {
      * @param article_id
      */
     public void incraseVisNum(int article_id);
+
+    /**
+     * 查询总记录数
+     * @return
+     */
+    int findTotalCount();
+
+    /**
+     * 分页查询
+     * @param start
+     * @param rows
+     * @return
+     */
+    List<Article> findByPage(int start, int rows);
 }

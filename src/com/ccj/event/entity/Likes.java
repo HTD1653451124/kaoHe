@@ -1,43 +1,43 @@
 package com.ccj.event.entity;
 
 public class Likes {
-    private int likes_id;
-    private int user_id;
-    private int article_id;
+    private int likesId;
+    private int userId;
+    private int articleId;
     private String isLikes;
 
     public Likes() {
     }
 
-    public Likes(int likes_id, int user_id, int article_id, String isLikes) {
-        this.likes_id = likes_id;
-        this.user_id = user_id;
-        this.article_id = article_id;
+    public Likes(int likesId, int userId, int articleId, String isLikes) {
+        this.likesId = likesId;
+        this.userId = userId;
+        this.articleId = articleId;
         this.isLikes = isLikes;
     }
 
-    public int getLikes_id() {
-        return likes_id;
+    public int getLikesId() {
+        return likesId;
     }
 
-    public void setLikes_id(int likes_id) {
-        this.likes_id = likes_id;
+    public void setLikesId(int likesId) {
+        this.likesId = likesId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getArticle_id() {
-        return article_id;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setArticle_id(int article_id) {
-        this.article_id = article_id;
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 
     public String getIsLikes() {
@@ -48,13 +48,5 @@ public class Likes {
         this.isLikes = isLikes;
     }
 
-    @Override
-    public String toString() {
-        return "Likes{" +
-                "likes_id=" + likes_id +
-                ", user_id=" + user_id +
-                ", article_id=" + article_id +
-                ", isLikes='" + isLikes + '\'' +
-                '}';
-    }
+
 }

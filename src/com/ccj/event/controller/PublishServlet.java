@@ -1,7 +1,11 @@
 package com.ccj.event.controller;
 
+import com.ccj.event.dao.Impl.TypesDaoImpl;
 import com.ccj.event.entity.Article;
+import com.ccj.event.entity.Types;
 import com.ccj.event.service.Impl.ArticleServiceImpl;
+import com.ccj.event.service.Impl.TypesServiceImpl;
+import com.ccj.event.service.TypesService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,19 +25,21 @@ public class PublishServlet extends HttpServlet {
         //发布文章
         String title = req.getParameter("title");
         String textContent = req.getParameter("textContent");
-        String worker_id = req.getParameter("worker_id");
+        String workerId = req.getParameter("workerId");
         String account = req.getParameter("account");
+        String typesId = req.getParameter("types");
 
         String picture = null;
         picture = req.getParameter("picture");
         ArticleServiceImpl articleService = new ArticleServiceImpl();
-        Boolean publish = articleService.publish(title, textContent, worker_id, picture);
+        Boolean publish = articleService.publish(title, textContent, workerId, picture,typesId);
         HttpSession session = req.getSession();
         if (publish){
             //文章发布成功
             List<Article> personArticle = articleService.getPersonalArticle(account);
             session.setAttribute("msg","发布成功，感谢您的分享");
             session.setAttribute("personArticle",personArticle);
+
             req.getRequestDispatcher("/worker_home.jsp").forward(req,resp);
         }else {
             session.setAttribute("msg","非常遗憾，文章发布失败");

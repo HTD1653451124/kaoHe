@@ -1,43 +1,52 @@
 package com.ccj.event.entity;
 
 public class Article {
-    private int article_id;
-    private int worker_id;
+    private int articleId;
+    private int workerId;
     private int visNum;
     private String contentText;
     private String contentPicture;
-    private int likes_num;
-    private int collection_num;
+    private int likesNum;
+    private int collectionNum;
     private String title;
+    private int typesId;
+
+    public int getTypesId() {
+        return typesId;
+    }
+
+    public void setTypesId(int typesId) {
+        this.typesId = typesId;
+    }
 
     public Article() {
     }
 
-    public Article(int article_id, int worker_id, int visNum, String contentText, String contentPicture, int likes_num, int collection_num, String title) {
-        this.article_id = article_id;
-        this.worker_id = worker_id;
+    public Article(int articleId, int workerId, int visNum, String contentText, String contentPicture, int likes_num, int collection_num, String title) {
+        this.articleId = articleId;
+        this.workerId = workerId;
         this.visNum = visNum;
         this.contentText = contentText;
         this.contentPicture = contentPicture;
-        this.likes_num = likes_num;
-        this.collection_num = collection_num;
+        this.likesNum = likesNum;
+        this.collectionNum = collectionNum;
         this.title = title;
     }
 
-    public int getArticle_id() {
-        return article_id;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setArticle_id(int article_id) {
-        this.article_id = article_id;
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 
-    public int getWorker_id() {
-        return worker_id;
+    public int getWorkerId() {
+        return workerId;
     }
 
-    public void setWorker_id(int worker_id) {
-        this.worker_id = worker_id;
+    public void setWorkerId(int workerId) {
+        this.workerId = workerId;
     }
 
     public int getVisNum() {
@@ -56,20 +65,20 @@ public class Article {
         this.title = title;
     }
 
-    public int getLikes_num() {
-        return likes_num;
+    public int getLikesNum() {
+        return likesNum;
     }
 
-    public void setLikes_num(int likes_num) {
-        this.likes_num = likes_num;
+    public void setLikesNum(int likesNum) {
+        this.likesNum = likesNum;
     }
 
-    public int getCollection_num() {
-        return collection_num;
+    public int getCollectionNum() {
+        return collectionNum;
     }
 
-    public void setCollection_num(int collection_num) {
-        this.collection_num = collection_num;
+    public void setCollectionNum(int collection_num) {
+        this.collectionNum = collection_num;
     }
 
     public String getContentText() {
@@ -91,13 +100,13 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "article_id=" + article_id +
-                ", worker_id=" + worker_id +
+                "article_id=" + articleId +
+                ", worker_id=" + workerId +
                 ", visNum=" + visNum +
                 ", contentText='" + contentText + '\'' +
                 ", contentPicture='" + contentPicture + '\'' +
-                ", likes_num=" + likes_num +
-                ", collection_num=" + collection_num +
+                ", likes_num=" + likesNum +
+                ", collection_num=" + collectionNum +
                 ", title='" + title + '\'' +
                 '}';
     }

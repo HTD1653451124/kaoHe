@@ -6,6 +6,15 @@ public class ResultInfo implements Serializable {
     private boolean isReg;
     private String msg;
     private Object data;
+    private String target;
+
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
 
     public ResultInfo() {
     }

@@ -1,7 +1,7 @@
 package com.ccj.event.entity;
 
 public class Worker {
-    private int worker_id;
+    private int workerId;
     private String account;
     private String password;
     private String virName;
@@ -10,20 +10,21 @@ public class Worker {
     public Worker() {
     }
 
-    public Worker(int worker_id, String account, String password, String virName, String gender) {
-        this.worker_id = worker_id;
+
+    public Worker(int workerId, String account, String password, String virName, String gender) {
+        this.workerId = workerId;
         this.account = account;
         this.password = password;
         this.virName = virName;
         this.gender = gender;
     }
 
-    public int getWorker_id() {
-        return worker_id;
+    public int getWorkerId() {
+        return workerId;
     }
 
-    public void setWorker_id(int worker_id) {
-        this.worker_id = worker_id;
+    public void setWorkerId(int workerId) {
+        this.workerId = workerId;
     }
 
     public String getAccount() {
@@ -58,14 +59,5 @@ public class Worker {
         this.gender = gender;
     }
 
-    @Override
-    public String toString() {
-        return "Worker{" +
-                "worker_id=" + worker_id +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", virName='" + virName + '\'' +
-                ", gender='" + gender + '\'' +
-                '}';
-    }
+
 }
