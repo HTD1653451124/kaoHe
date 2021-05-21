@@ -9,14 +9,11 @@ import com.ccj.event.service.Impl.TypesServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 @WebServlet("/workerServlet")
 public class WorkerServlet extends BaseServlet {
@@ -81,4 +78,5 @@ public class WorkerServlet extends BaseServlet {
         session.setAttribute("allComment",allComment);
         req.getRequestDispatcher("/worker_visit.jsp").forward(req,resp);
     }
+
 }

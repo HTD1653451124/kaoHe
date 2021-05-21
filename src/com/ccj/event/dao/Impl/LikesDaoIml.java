@@ -9,6 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LikesDaoIml implements LikesDao {
+    /**
+     * 查询是否已赞
+     * @param article_id
+     * @param user_id
+     * @return
+     */
     @Override
     public String isLikes(String article_id, String user_id) {
         Connection conn = null;
@@ -35,6 +41,13 @@ public class LikesDaoIml implements LikesDao {
         return null;
     }
 
+    /**
+     * 查询是否已经收藏，true为已收藏，false为未收藏
+     *
+     * @param article_id
+     * @param user_id
+     * @return
+     */
     @Override
     public String isCollected(String article_id, String user_id) {
         Connection conn = null;
@@ -96,6 +109,12 @@ public class LikesDaoIml implements LikesDao {
 
     }
 
+    /**
+     * 取消点赞
+     * @param article_id
+     * @param user_id
+     * @return
+     */
     @Override
     public Boolean cancelLikes(String article_id, String user_id) {
         Connection conn = null;
@@ -103,7 +122,7 @@ public class LikesDaoIml implements LikesDao {
         PreparedStatement ps2 = null;
         try{
             conn = JDBCUtils.getConnection();
-            String sql = "delete from collection where user_id = ? and article_id = ?";
+            String sql = "delete from likes where user_id = ? and article_id = ?";
             String sql2 = "update article set likes_num = likes_num-1 where article_id = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1,user_id);
@@ -122,6 +141,12 @@ public class LikesDaoIml implements LikesDao {
         return true;
     }
 
+    /**
+     * 收藏
+     * @param article_id
+     * @param user_id
+     * @return
+     */
     @Override
     public Boolean collection(String article_id, String user_id) {
         Connection conn = null;
@@ -149,6 +174,12 @@ public class LikesDaoIml implements LikesDao {
         return true;
     }
 
+    /**
+     * 取消收藏
+     * @param article_id
+     * @param user_id
+     * @return
+     */
     @Override
     public Boolean cancelCollect(String article_id, String user_id) {
         Connection conn = null;

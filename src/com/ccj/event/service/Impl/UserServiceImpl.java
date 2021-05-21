@@ -1,8 +1,11 @@
 package com.ccj.event.service.Impl;
 
 import com.ccj.event.dao.Impl.UserDaoImpl;
+import com.ccj.event.entity.Article;
 import com.ccj.event.entity.User;
 import com.ccj.event.service.UserService;
+
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
@@ -42,5 +45,20 @@ public class UserServiceImpl implements UserService {
         UserDaoImpl userDao = new UserDaoImpl();
         User all = userDao.getAll(account);
         return all;
+    }
+
+    @Override
+    public List<Article> getLikes(String userId) {
+        UserDaoImpl userDao = new UserDaoImpl();
+        List<Article> articles = userDao.likes(userId);
+        return articles;
+    }
+
+    @Override
+    public List<Article> getCollection(String userId) {
+        UserDaoImpl userDao= new UserDaoImpl();
+        List<Article> collection = userDao.collection(userId);
+        return collection;
+
     }
 }

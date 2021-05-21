@@ -4,6 +4,13 @@
     <title>ERROR</title>
     <script src="js/js3.js"></script>
 </head>
+<style>
+    .div_error{
+        width: 300px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+</style>
 <script>
 
     var second = 3;
@@ -20,7 +27,9 @@
 
 </script>
 <body>
-<h2>${Msg.getMsg()}</h2><span id="time">3</span>秒后自动返回
-<span  id="tar" >${Msg.getTarget()}</span>
+<div class="div_error">
+    <h2>${Msg.getMsg()}</h2><span id="time">3</span>秒后自动返回
+</div>
+
 </body>
 </html>

@@ -1,16 +1,22 @@
 package com.ccj.event.dao.Impl;
 
 import com.ccj.event.dao.AdminDao;
-import com.ccj.event.entity.Article;
 import com.ccj.event.entity.Types;
 import com.ccj.event.util.JDBCUtils;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class AdminDaoImpl implements AdminDao {
+    /**
+     * 获取所有文章种类
+     * @return
+     */
     @Override
     public List<Types> getTypes() {
         Connection conn = null;
@@ -37,6 +43,11 @@ public class AdminDaoImpl implements AdminDao {
         return list;
     }
 
+    /**
+     * 获取不同类别的浏览量
+     * @param list
+     * @return
+     */
     @Override
     public List<Integer> getCount(List<Types> list) {
         Connection conn = null;
@@ -65,6 +76,10 @@ public class AdminDaoImpl implements AdminDao {
         return result;
     }
 
+    /**
+     * 删除文章种类，删除该种类的所有文章
+     * @param typeId
+     */
     @Override
     public void delete(String typeId) {
         Connection conn = null;

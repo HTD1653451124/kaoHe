@@ -1,6 +1,9 @@
 package com.ccj.event.service;
 
+import com.ccj.event.entity.Article;
 import com.ccj.event.entity.User;
+
+import java.util.List;
 
 public interface UserService {
     /**
@@ -24,4 +27,13 @@ public interface UserService {
      * @return
      */
     public User findAll(String account);
+
+    /**
+     * 获取用户的点赞集
+     * @param userId
+     * @return
+     */
+    public List<Article> getLikes(String userId);
+
+    public List<Article> getCollection(String userId);
 }

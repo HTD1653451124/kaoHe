@@ -12,6 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentDaoImpl implements CommentDao {
+    /**
+     * 发表评论
+     * @param content
+     * @param user_id
+     * @param article_id
+     * @param vName
+     * @return
+     */
     @Override
     public Boolean comment(String content, String user_id, String article_id,String vName) {
         Connection conn = null;

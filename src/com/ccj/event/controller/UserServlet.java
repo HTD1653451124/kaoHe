@@ -1,22 +1,16 @@
 package com.ccj.event.controller;
 
 import com.ccj.event.bean.AdminBean;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import com.ccj.event.bean.PageBean;
+import com.ccj.event.bean.ResultInfo;
 import com.ccj.event.bean.UserBean;
 import com.ccj.event.dao.Impl.UserDaoImpl;
-import com.ccj.event.entity.Article;
-import com.ccj.event.entity.Comment;
-import com.ccj.event.entity.Types;
-import com.ccj.event.entity.User;
-import com.ccj.event.entity.Worker;
+import com.ccj.event.entity.*;
 import com.ccj.event.service.Impl.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,6 +29,7 @@ public class UserServlet extends BaseServlet {
         String currentPage = req.getParameter("currentPage");
         String rows = req.getParameter("rows");
         String method = req.getParameter("method");
+        ResultInfo resultInfo = new ResultInfo();
         //调用service层代码
         ArticleServiceImpl articleService = new ArticleServiceImpl();
         PageBean<Article> pb =  articleService.findArticleByPage(currentPage,rows);
@@ -66,13 +61,14 @@ public class UserServlet extends BaseServlet {
                     session.setAttribute("method","login");
                     if ("search".equals(method)){
                         req.getRequestDispatcher("/search").forward(req,resp);
-                        return;
                     }
                     session.setAttribute("pb",pb);
                     req.getRequestDispatcher("/home.jsp").forward(req,resp);
                 }else {
-                    req.setAttribute("login_msg","登陆失败");
-                    req.getRequestDispatcher("/login.jsp").forward(req,resp);
+                    resultInfo.setMsg("账号或密码输入有误");
+                    session.setAttribute("target","login.jsp");
+                    session.setAttribute("Msg",resultInfo);
+                    req.getRequestDispatcher("/error.jsp").forward(req,resp);
                 }
             }else {
                 //worker登录
@@ -89,8 +85,10 @@ public class UserServlet extends BaseServlet {
                     session.setAttribute("personArticle",personalArticle);
                     req.getRequestDispatcher("/worker_home.jsp").forward(req,resp);
                 }else {
-                    req.setAttribute("login_msg","登陆失败");
-                    req.getRequestDispatcher("/login.jsp").forward(req,resp);
+                    resultInfo.setMsg("账号或密码输入有误");
+                    session.setAttribute("target","login.jsp");
+                    session.setAttribute("Msg",resultInfo);
+                    req.getRequestDispatcher("/error.jsp").forward(req,resp);
                 }
             }
         }
@@ -239,8 +237,12 @@ public class UserServlet extends BaseServlet {
 
         }else {
             //注册失败
-            req.setAttribute("reg_msg","注册失败");
-            req.getRequestDispatcher("/register.jsp").forward(req,resp);
+            ResultInfo resultInfo = new ResultInfo();
+            resultInfo.setMsg("注册失败");
+            HttpSession session = req.getSession();
+            session.setAttribute("Msg",resultInfo);
+            session.setAttribute("target","register.jsp");
+            req.getRequestDispatcher("/error.jsp").forward(req,resp);
         }
     }
     public void findUserAccount(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
@@ -328,6 +330,34 @@ public class UserServlet extends BaseServlet {
             session.setAttribute("Msg","评论失败");
         }
         req.getRequestDispatcher("/visitArticleContent.jsp").forward(req,resp);
+
+    }
+    public void visitLikes(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
+        String userId = req.getParameter("userId");
+        String account = req.getParameter("account");
+        //查询出用户的点赞集
+        UserServiceImpl userService = new UserServiceImpl();
+        List<Article> articles = userService.getLikes(userId);
+        User all = userService.findAll(account);
+        session.setAttribute("articles",articles);
+        session.setAttribute("user",all);
+        req.getRequestDispatcher("/likes.jsp").forward(req,resp);
+
+    }
+    public void visitCollection(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
+        String userId = req.getParameter("userId");
+        String account = req.getParameter("account");
+        //查询出用户的收藏集
+        UserServiceImpl userService = new UserServiceImpl();
+        List<Article> articles = userService.getCollection(userId);
+        User all = userService.findAll(account);
+        //存入session域中
+        session.setAttribute("articles",articles);
+        session.setAttribute("user",all);
+        req.getRequestDispatcher("/likes.jsp").forward(req,resp);
+    }
+
+    public void chat(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 
     }
 }

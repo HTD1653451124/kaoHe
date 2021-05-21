@@ -18,8 +18,8 @@
       padding-left: 50px;
       box-sizing: border-box;
     }
-    .td_right{
-      padding-top: 50px;
+    .active{
+      padding-top: 30px;
     }
 
     #search{
@@ -35,24 +35,22 @@
 <body>
 <div class="ho_layout">
   <div class = "ho_left">
-    <form action="#" method="post">
-      <table>
+      <table class="table table-striped">
         <tr>
           <td><label>${user.virName}</label></td>
         </tr>
         <tr>
-          <td><input class="btn btn-default" type="button" name="likes" id="likes" value="赞过"></td>
+           <td class="success"><a href="${pageContext.request.contextPath}/userServlet?method=visitLikes&account=${user.account}&userId=${user.userId}"><input class="btn btn-default" type="button" name="liked" id="liked" value="赞过"></a></td>
         </tr>
-        <tr>
-          <td><input class="btn btn-default" type="button" name="collection" id="collection" value="收藏"></td>
+        </tr>
+          <td class="success"><a href="${pageContext.request.contextPath}/userServlet?method=visitCollection&account=${user.account}&userId=${user.userId}"><input class="btn btn-default" type="button" name="collected" id="collected" value="收藏"></a></td>
         </tr>
       </table>
-    </form>
   </div>
   <div class="ho_right">
       <table>
         <div class="changePic">
-          <img id="img" src="image/pic1.jpg" width="100%" height="235px">
+          <img id="img" src="image/pic1.jpg" width="100%" height="225px">
         </div>
       </table>
     <table>
@@ -64,10 +62,12 @@
         </tr>
         </form>
     </table>
-    <table>
+    <table class="table table-striped">
         <c:forEach items="${pb.list}" var="m">
             <tr>
-              <td class="td_right"><a href="${pageContext.request.contextPath}/userServlet?text=${m.contentText}&articleId=${m.articleId}&workerId=${m.workerId}&visNum=${m.visNum}&picture=${m.contentPicture}&likesNum=${m.likesNum}&collectionNum=${m.collectionNum}&title=${m.title}&userId=${user.userId}&method=visitArticle">${m.title}</a> 点赞数:${m.likesNum} 收藏数:${m.collectionNum}</td>
+              <td class="active"><a href="${pageContext.request.contextPath}/userServlet?text=${m.contentText}&articleId=${m.articleId}&workerId=${m.workerId}&visNum=${m.visNum}&picture=${m.contentPicture}&likesNum=${m.likesNum}&collectionNum=${m.collectionNum}&title=${m.title}&userId=${user.userId}&method=visitArticle">${m.title}</a></td>
+                <td class="info"> 点赞数:${m.likesNum} </td>
+                <td class="info">收藏数:${m.collectionNum}</td>
             </tr>
         </c:forEach>
     </table>

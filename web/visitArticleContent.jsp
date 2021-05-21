@@ -2,12 +2,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
     <title>文章</title>
     <script src="js/js3.js"></script>
+    <script src="js/jquery.js" ></script>
+    <script src="js/bootstrap.min.js"></script>
     <style>
         .message{
             width: 500px;
-           margin-right: auto;
+            margin-right: auto;
             margin-left: auto;
         }
         .div_comment{
@@ -15,8 +21,13 @@
             margin-right: auto;
             margin-left: auto;
         }
-        .title{
-            width: 200px;
+        .content{
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .real{
+            width: 80%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -53,10 +64,16 @@
 <body>
 <div class="layout">
     <div class="message">
-        <h2 class="title">${article.title}</h2>
+        <div class="content">
+            <div class="real">
+                <h2 class="title">${article.title}</h2>
+            </div>
+
+        </div>
+
         <br>
-        <h4 class="info"><input type="button" name="likes" id="likes1" value="点赞"></h4>
-        <h4 class="info"><input type="button" name="collection" id="collection1" value="收藏"></h4>
+        <h4 class="info"><input class="btn btn-default" type="button" name="likes" id="likes1" value="点赞"></h4>
+        <h4 class="info"><input class="btn btn-default" type="button" name="collection" id="collection1" value="收藏"></h4>
         <br>
         <p>${article.contentText}</p>
     </div>
@@ -69,11 +86,11 @@
     <div class="div_comment">
         <form method="post">
             <textarea name="comment" class="comment" id="comment" placeholder="写点评论吧"></textarea>
-            <input type="button" name="btn_comment" id="btn_comment" value="确认评论">
+            <input class="btn btn-default" type="button" name="btn_comment" id="btn_comment" value="确认评论">
         </form>
     </div>
     <div class="div_buttom">
-        <a href="home.jsp"><input type="button" name="bt_return" id="bt_return" value="返回"></a>
+        <a href="home.jsp"><input class="btn btn-default" type="button" name="bt_return" id="bt_return" value="返回"></a>
     </div>
 </div>
 
@@ -155,12 +172,14 @@
                     url :'${pageContext.request.contextPath}/userServlet?method=comment',
                     success:function (data){
                         alert("评论成功");
+                        $("#comment").html("");
                     }
                 });
             }else {
                 alert("输入为空");
             }
         }
+
     })
 
 </script>

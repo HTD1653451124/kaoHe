@@ -36,7 +36,7 @@ public class LikesServiceImpl implements LikesService {
         LikesDaoIml likesDaoIml = new LikesDaoIml();
         String collected = likesDaoIml.isCollected(article_id, user_id);
         if ("1".equals(collected)){
-            Boolean isCancel = likesDaoIml.cancelLikes(article_id, user_id);
+            Boolean isCancel = likesDaoIml.cancelCollect(article_id, user_id);
             return isCancel;
         }else {
             Boolean isSuccess = likesDaoIml.collection(article_id, user_id);

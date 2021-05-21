@@ -3,7 +3,6 @@ package com.ccj.event.dao.Impl;
 import com.ccj.event.dao.ArticleDao;
 import com.ccj.event.entity.Article;
 import com.ccj.event.util.JDBCUtils;
-import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -202,6 +201,10 @@ public class ArticleDaoImpl implements ArticleDao {
         }
     }
 
+    /**
+     * 查询总记录数
+     * @return
+     */
     @Override
     public int findTotalCount() {
         Connection conn = null;
@@ -275,5 +278,7 @@ public class ArticleDaoImpl implements ArticleDao {
         }
         return list;
     }
+
+
 
 }

@@ -1,6 +1,9 @@
 package com.ccj.event.dao;
 
+import com.ccj.event.entity.Article;
 import com.ccj.event.entity.User;
+
+import java.util.List;
 
 public interface UserDao {
     /**
@@ -31,4 +34,18 @@ public interface UserDao {
      * @return
      */
     public User getAll(String account);
+
+    /**
+     * 获取某个用户的点赞集合
+     * @param userId
+     * @return
+     */
+    public  List<Article> likes(String userId);
+
+    /**
+     * 获取某个用户收藏拦
+     * @param userId
+     * @return
+     */
+    public List<Article> collection(String userId);
 }

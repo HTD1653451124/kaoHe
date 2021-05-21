@@ -1,6 +1,7 @@
 package com.ccj.event.dao.Impl;
 
 import com.ccj.event.dao.UserDao;
+import com.ccj.event.entity.Article;
 import com.ccj.event.entity.User;
 import com.ccj.event.util.JDBCUtils;
 
@@ -8,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
     /**
@@ -141,4 +144,96 @@ public class UserDaoImpl implements UserDao {
         return user;
 
     }
+
+    /**
+     * 获取某个用户的点赞集合
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Article> likes(String userId) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        PreparedStatement ps2 = null;
+        ResultSet rs = null;
+        ResultSet rs2 = null;
+        List<Article> list = new ArrayList<>();
+        try {
+            conn = JDBCUtils.getConnection();
+            String sql1 = "select * from likes where user_id = ?";
+            String sql2 = "select * from article where article_id = ?";
+            ps = conn.prepareStatement(sql1);
+            ps.setString(1,userId);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                Article article = new Article();
+                int articleId = rs.getInt("article_id");
+                ps2 = conn.prepareStatement(sql2);
+                ps2.setInt(1,articleId);
+                rs2 = ps2.executeQuery();
+                if (rs2.next()){
+                    String title = rs2.getString("title");
+                    article.setArticleId(articleId);
+                    article.setTitle(title);
+                    article.setVisNum(rs2.getInt("vis_num"));
+                    article.setContentText(rs2.getString("content_text"));
+                    article.setContentPicture(rs2.getString("content_picture"));
+                    article.setLikesNum(rs2.getInt("likes_num"));
+                    article.setCollectionNum(rs2.getInt("collection_num"));
+                    article.setWorkerId(rs2.getInt("worker_id"));
+                    article.setTypesId(rs2.getInt("types_id"));
+                    list.add(article);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+
+    }
+
+    /**
+     * 获取某个用户收藏拦
+     * @param userId
+     * @return
+     */
+     public List<Article> collection(String userId){
+         Connection conn = null;
+         PreparedStatement ps = null;
+         PreparedStatement ps2 = null;
+         ResultSet rs = null;
+         ResultSet rs2 = null;
+         List<Article> list = new ArrayList<>();
+         try {
+             conn = JDBCUtils.getConnection();
+             String sql1 = "select * from collection where user_id = ?";
+             String sql2 = "select * from article where article_id = ?";
+             ps = conn.prepareStatement(sql1);
+             ps.setString(1,userId);
+             rs = ps.executeQuery();
+             while (rs.next()){
+                 Article article = new Article();
+                 int articleId = rs.getInt("article_id");
+                 ps2 = conn.prepareStatement(sql2);
+                 ps2.setInt(1,articleId);
+                 rs2 = ps2.executeQuery();
+                 if (rs2.next()){
+                     String title = rs2.getString("title");
+                     article.setArticleId(articleId);
+                     article.setTitle(title);
+                     article.setVisNum(rs2.getInt("vis_num"));
+                     article.setContentText(rs2.getString("content_text"));
+                     article.setContentPicture(rs2.getString("content_picture"));
+                     article.setLikesNum(rs2.getInt("likes_num"));
+                     article.setCollectionNum(rs2.getInt("collection_num"));
+                     article.setWorkerId(rs2.getInt("worker_id"));
+                     article.setTypesId(rs2.getInt("types_id"));
+                     list.add(article);
+                 }
+             }
+         } catch (SQLException throwables) {
+             throwables.printStackTrace();
+         }
+         return list;
+     }
 }

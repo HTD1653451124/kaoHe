@@ -19,7 +19,17 @@ public interface WorkerDao {
      */
     public Boolean login(String account, String password);
 
+    /**
+     * 通过账号获取服务工作者的信息
+     * @param account
+     * @return
+     */
     public Worker getWorkerInfo(String account);
 
+    /**
+     * 发表文章
+     * @param article
+     * @return
+     */
     public Boolean publish(Article article);
 }

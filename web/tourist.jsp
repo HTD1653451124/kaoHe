@@ -35,14 +35,7 @@
     <div class="changePic">
       <img id="img" src="image/pic1.jpg" width="100%" height="235px">
     </div>
-<%--    <form method="post" action="/CAT_war_exploded/search?type=tourist">--%>
-<%--      <table>--%>
-<%--            <tr>--%>
-<%--              <td><input type="text" name="search" id="search" placeholder="请输入关键词搜索"></td>--%>
-<%--              <td><input type="submit" name="btn_search" value="搜索"></td>--%>
-<%--            </tr>--%>
-<%--      </table>--%>
-<%--    </form>--%>
+
     <table>
         <c:forEach items="${articles}" var="m" >
           <tr>

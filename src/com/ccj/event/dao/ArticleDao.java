@@ -19,6 +19,15 @@ public interface ArticleDao {
     public List<Article> findPersonalArticle(String account);
 
 
+    /**
+     * 发表文章
+     * @param title
+     * @param text
+     * @param worker_id
+     * @param picture
+     * @param types_id
+     * @return
+     */
     public Boolean publish(String title ,String text ,String worker_id,String picture,String types_id);
 
     /**
@@ -38,7 +47,7 @@ public interface ArticleDao {
      * 查询总记录数
      * @return
      */
-    int findTotalCount();
+    public int findTotalCount();
 
     /**
      * 分页查询
@@ -46,5 +55,7 @@ public interface ArticleDao {
      * @param rows
      * @return
      */
-    List<Article> findByPage(int start, int rows);
+    public List<Article> findByPage(int start, int rows);
+
+
 }

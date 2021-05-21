@@ -7,14 +7,14 @@
     <script src="js/js3.js"></script>
     <style>
         body{
-            background: url("image/login/login_bg.jpg") no-repeat center ;
+            background: url("image/bg00.jpg") no-repeat center ;
             background-size: 2500px ;
         }
         .lg_layout{
-            width: 400px;
-            height: 300px;
-            /*//border: 10px solid #EEEEEE;*/
-            /*//background-color: white;*/
+            width: 500px;
+            height: 600px;
+            border: 10px solid #EEEEEE;
+            background-color: white;
             margin: auto;
             margin-top: 20px;
         }
@@ -26,13 +26,11 @@
             font-size: 25px;
         }
         .lg_middle{
-
             float: left;
             margin-top: 100px;
             margin-left: 70px;
         }
         .lg_right{
-
             float: right;
             color: #F5A9A9;
         }
@@ -60,7 +58,6 @@
         }
     </style>
     <script>
-
         function checkAccount(){
             var ele = document.getElementById("account").value;
             if (ele == "" && ele.value == null){
@@ -149,9 +146,6 @@
     </div>
     <div class = "lg_right">
         <P>健康关爱，我们常在</P>
-    </div>
-    <div class="alert alert-warning alert-dismissible" role="alert" id="tips">
-        <strong>${login_msg}</strong>
     </div>
 </div>
 </body>

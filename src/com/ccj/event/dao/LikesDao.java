@@ -1,7 +1,5 @@
 package com.ccj.event.dao;
 
-import java.util.List;
-
 public interface LikesDao {
     /**
      * 查询是否已经赞过，true为赞过，false为没赞过
@@ -30,6 +28,12 @@ public interface LikesDao {
      */
     public Boolean likes(String article_id, String user_id);
 
+    /**
+     * 取消点赞
+     * @param article_id
+     * @param user_id
+     * @return
+     */
     public Boolean cancelLikes(String article_id, String user_id);
 
     /**
@@ -41,7 +45,14 @@ public interface LikesDao {
      */
     public Boolean collection(String article_id, String user_id);
 
+    /**
+     * 取消收藏
+     * @param article_id
+     * @param user_id
+     * @return
+     */
     public Boolean cancelCollect(String article_id, String user_id);
+
 
 
 }

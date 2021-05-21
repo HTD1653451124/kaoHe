@@ -51,6 +51,13 @@ public class SearchDaoImpl implements SearchDao {
         return list;
     }
 
+    /**
+     * 分页查询
+     * @param tips
+     * @param start
+     * @param rows
+     * @return
+     */
     @Override
     public List<Article> findByPage(String tips,int start, int rows) {
         Connection conn = null;
@@ -95,6 +102,11 @@ public class SearchDaoImpl implements SearchDao {
         return list;
     }
 
+    /**
+     * 获取模糊查询的总记录数
+     * @param tips
+     * @return
+     */
     @Override
     public int findTotalCount(String tips) {
         Connection conn = null;

@@ -48,5 +48,8 @@ public interface ArticleService {
      * @param rows
      * @return
      */
-    PageBean<Article> findArticleByPage(String currentPage, String rows);
+    public PageBean<Article> findArticleByPage(String currentPage, String rows);
+
+
+
 }
