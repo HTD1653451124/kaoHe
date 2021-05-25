@@ -3,14 +3,12 @@ package com.ccj.event.util;
 import java.sql.*;
 
 public class JDBCUtils {
-    private static String url;
-    private static String user;
-    private static String password;
+    private static final String url = "jdbc:mysql://localhost:3306/cathealth";
+    private static final String user= "root";
+    private static final String password = "root";
     private static String driver;
     static {
-        url = "jdbc:mysql://localhost:3306/cathealth";
-        user = "root";
-        password = "root";
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {

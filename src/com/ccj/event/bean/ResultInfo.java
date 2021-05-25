@@ -8,6 +8,7 @@ public class ResultInfo implements Serializable {
     private Object data;
 
 
+
     public ResultInfo() {
     }
 

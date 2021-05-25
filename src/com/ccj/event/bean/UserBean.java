@@ -3,12 +3,12 @@ package com.ccj.event.bean;
 import com.ccj.event.entity.User;
 import com.ccj.event.entity.Worker;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.Iterator;
 import java.util.Map;
 
 public class UserBean {
     public User  regisUser(Map<String, String[]> map){
+
         User user = new User();
         Iterator iterator = map.keySet().iterator();
         while (iterator.hasNext()){
